@@ -36,6 +36,21 @@ PostgreSQLの場合
 $odbcCmd.CommandText = $PGCMD
 ```
 
+# Pleasanterをデータベースからローカルファイルに切り替える
+Pleasanterの設定を変更します。 
+PleasanterRoot\Implem.Pleasanter\App_Data\Parameters\BinaryStorage.json 
+(初期設定時)データベースに保存する場合の設定
+```
+"Provider": "Rds",
+"Path": null,
+```
+ローカルファイルに保存する場合の設定
+```
+"Provider": "Local",
+"Path": "C:\\web\\data",
+```
+(注意)フォルダ区切りは\\です。
+
 # 最後に
 無事バイナリデータを作成した後はデータベースのバイナリデータを消去します。 
 データを削除する為の一般的なSQLです。 
