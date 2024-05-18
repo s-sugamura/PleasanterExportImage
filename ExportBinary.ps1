@@ -4,11 +4,13 @@ $WarningPreference = "Continue"
 $VerbosePreference = "Continue"
 $DebugPreference = "Continue"
 
+#設定
 $DNS = "<ODBC名>"
 $HNM = "localhost"
 $DB = "Implem.Pleasanter"
 $UID = "sa"
 $PWD = "<パスワード>"
+$Folder = "C:\web\data"
 
 # ライブラリ読み込み
 [void][System.Reflection.Assembly]::LoadWithPartialName("System.Data")
@@ -22,7 +24,7 @@ $odbcCon.Open()
 $odbcCmd = New-Object System.Data.Odbc.OdbcCommand
 $odbcCmd.Connection = $odbcCon
 
-$Folder = "C:\web\data"
+# フォルダ作成
 New-Item ($Folder + "\Attachments") -ItemType Directory -Force
 New-Item ($Folder + "\Images") -ItemType Directory -Force
 New-Item ($Folder + "\SiteImage") -ItemType Directory -Force
@@ -46,7 +48,7 @@ while( 1 -eq 1 ){
     $MSCMD = $MSCMD + " FROM [Binaries]) AS t"
     $MSCMD = $MSCMD + " WHERE rownum BETWEEN $rows AND $rowe ORDER BY rownum"
 
-    #
+    # 処理
     $odbcCmd.CommandText = $MSCMD
     $odbcReader = $odbcCmd.ExecuteReader()
     $cnt = 0
@@ -85,6 +87,3 @@ $odbcCmd.Dispose()
 # DB切断
 $odbcCon.Close()
 $odbcCon.Dispose()
-
-#SELECT * FROM Binaries
-#UPDATE Binaries SET Bin = NULL, Thumbnail=NULL, Icon=NULL
