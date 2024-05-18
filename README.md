@@ -1,2 +1,1 @@
 # PleasanterExportImage
-# Sample
