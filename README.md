@@ -1,0 +1,2 @@
+# PleasanterExportImage
+# Sample
