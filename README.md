@@ -40,4 +40,6 @@ $odbcCmd.CommandText = $PGCMD
 無事バイナリデータを作成した後はデータベースのバイナリデータを消去します。 
 データを削除する為の一般的なSQLです。 
 ツールな使用するデータベースに合わせて変更してください。
+```
 UPDATE Binaries SET Bin=NULL, Thumbnail=NULL, Icon=NULL
+```
